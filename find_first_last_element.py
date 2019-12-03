@@ -1,0 +1,21 @@
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        lo,hi=0,len(nums)-1
+        
+        while lo<=hi:
+            median=(lo+hi)//2
+            if nums[median]==target:
+                left,right=0,0
+                while (median-left)>=0 and nums[median-left]==target:
+                    
+                        left+=1
+                while (median+right)<=len(nums)-1 and nums[median+right]==target:
+             
+                        right+=1
+                return (median-left+1,median+right-1)  
+            else:
+                if target>nums[median]:
+                    lo=median+1
+                elif target<nums[median]:
+                    hi=median-1
+        return ([-1,-1]) 
